@@ -4,13 +4,16 @@ function displayTemperature(response) {
   let descriptionElement = document.querySelector("#condition");
   let humidityElement = document.querySelector("#humidity");
   let windElement = document.querySelector("#wind");
+  let dateElement = document.querySelector("#date");
+  let iconElement = document.querySelector("#icon");
   temperatureElement.innerHTML = Math.round(response.data.temperature.current);
   cityElement.innerHTML = response.data.city;
-  descriptionElement.innerHTML = response.data.condition;
+  descriptionElement.innerHTML = response.data.condition.description;
   humidityElement.innerHTML = response.data.temperature.humidity;
-  windElement.innerHTML = response.data.wind;
+  windElement.innerHTML = Math.round(response.data.wind.speed);
+  dateElement.innerHTML = response.data.time;
+  iconElement.innerHTML = response.data.icon;
 }
-
 let apiKey = "bcfbb3o05cb4945t5f00bab1b879706f";
 let apiUrl = ` https://api.shecodes.io/weather/v1/current?query=${encodeURIComponent(
   "New York"
